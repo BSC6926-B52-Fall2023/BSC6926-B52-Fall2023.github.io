@@ -6,13 +6,15 @@ website:
   title: "BSC6926fall2023"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+    - text: "Syllabus"
+      href: sylb.html
+    - text: "Computer setup"
+      href: comp.html
 
 format:
   html:
-    theme: cosmo
+    theme: yeti
+    highlight: haddock
     css: styles.css
     toc: true
 
