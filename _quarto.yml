@@ -16,7 +16,7 @@ format:
     theme: yeti
     highlight: haddock
     css: styles.css
-    toc: true
+    toc: false
 
 
 
