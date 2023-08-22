@@ -2,10 +2,10 @@
 title: "Syllabus"
 ---
 
-### *BSC 6926 B53: R workshop on population and community ecological modeling*
+### *BSC 6926 B52: R workshop on population and community ecological modeling*
 
-**Fall 2022**\
-**Tuesdays 1 - 2:15 pm**\
+**Fall 2023**\
+**Tuesdays 1 - 2:30 pm**\
 **Format:**\
     - In-person + Face-to-Face: BBC MSB 112\
     - Remote: [Zoom link](https://fiu.zoom.us/j/94001884298?pwd=b25VZTh6eHFlOVdjRDhrbUV6OTBVZz09)
