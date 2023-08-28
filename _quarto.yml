@@ -10,13 +10,14 @@ website:
       href: sylb.html
     - text: "Computer setup"
       href: comp.html
+    - text: 'WS 1'
+      href: ws1.qmd
 
 format:
   html:
     theme: yeti
     highlight: haddock
     css: styles.css
-    toc: false
 
 
 
