@@ -224,6 +224,45 @@ write.csv(df, 'data/df.csv')
 
 write_csv(df, 'data/df.csv')
 
+##  Indexing
+#Once data is stored in an object, being able to retrieve those values is useful. Referred to as indexing, the syntax is specific to how the data is stored. With indexing specific values within your object can be modified. 
+
+# vector 
+b = 1:15
+# 3rd object 
+b[3]
+
+# make a character vector 
+c = c('a', 'b', 'c')
+c
+# 2nd object
+c[2]
+# change 
+c[2] = 'new'
+c
+
+# dataframe and tibbles
+mtcars
+# first column
+mtcars[1]
+# first row
+mtcars[1,]
+# 2nd row of first column
+mtcars[2,1]
+# can call specific columns (called as a vector)
+mtcars$mpg
+mtcars$cyl
+#same for tibble
+d = mtcars %>% as_tibble
+d[1]
+d$mpg
+d$cyl
+# specific row in specific column
+mtcars$cyl[1]
+d$cyl[1]
+
+
+
 # ## Exercises 
 # ### Complete following exercises and turn in r script on canvas
 # 1.    Make two vectors, object `a` containing the values 2, 3, 4, and 5 and object `b`containing the values 50, 100, 38, and 42.
