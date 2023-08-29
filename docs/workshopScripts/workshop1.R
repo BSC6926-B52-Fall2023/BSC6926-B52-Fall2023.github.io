@@ -17,7 +17,8 @@
 #   5.  Using Packages in R
 #     + How to install and load packages
 #   6.  Working with `dataframes` and `tibbles`
-#   7.  Exercises
+#   7.  Indexing
+#   8.  Exercises
 
 
 ## Basic operations in R
