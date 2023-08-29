@@ -16,9 +16,8 @@
 #   4.  Functions in R
 #   5.  Using Packages in R
 #     + How to install and load packages
-#   6.  `tidyverse`
-#     + tidy data
-#     + piping 
+#   6.  Working with `dataframes` and `tibbles`
+#   7.  Exercises
 
 
 ## Basic operations in R
@@ -188,70 +187,50 @@ library(tidyverse)
 c = tibble(c1 = c(1,2,3), c2 = c('a','b','c'))
 c
 
-### tidy data
-# Data is collected and stored in many different ways, which can make it difficult to analyze. One of the goals of tidyverse is to easily turn messy data into tidy data which can easily be analyzed. In tidy data:
-#   
-#   1. Every column is a variable.
-#   2. Every row is an observation.
-#   3. Every cell is a single value.
-# 
-# Two functions `pivot_longer()` and `pivot_wider()` are useful in manipulating data stored in rows and columns. ***Note that `pivot_longer()` and `pivot_wider()` have replaced `gather()` and `spread()` in newer versions of `tidyverse`
+## Working with `dataframes` and `tibbles`
+# Using either `dataframes` or `tibbles` will likely be the most common data structure for ecological data. Making these data structures is easy with the `data.frame()` or `tibble()` functions. Tibbles have more flexibility than dataframes and are part of the `tidyverse`. Dataframes are base R. When reading in tabular data, `read.csv()` will create a dataframe, while `read_csv()` will generate a tibble. `read_csv()` can be paired with `url()` to use data directly from the internet from sites like github. Note that if from github the raw file (click on raw tab when looking at github file) is needed for this to work. Similar to reading in data, `dataframes` and `tibbles` can be saved as .csv with `write.csv()` or `write_csv()`.
 
-#tidying data 
-stock = tibble(name = c('GOOG', 'AMC', 'GME'),
-               Jan = c(1000, 2, 4),
-               Feb = c(1010, 15, 30),
-               March = c(1005, 25, 180))
+library(tidyverse)
+# create a dataframe
 
-stock 
-
-df = pivot_longer(stock,
-               cols = Jan:March, 
-               names_to = 'Month',
-               values_to = 'Price')
+df = data.frame(name = c('GOOG', 'AMC', 'GME'),
+                Jan = c(1000, 2, 4),
+                Feb = c(1010, 15, 30),
+                March = c(1005, 25, 180))
 
 df
 
-# wide format
-fish = tibble(species = rep(c('Salmon', 'Cod'),times = 3),
-              year = rep(c(1999,2005,2020), each = 2),
-              catch = c(50, 60, 40, 50, 60, 100))
-fish 
+# create a tibble
+tib = tibble(name = c('GOOG', 'AMC', 'GME'),
+             Jan = c(1000, 2, 4),
+             Feb = c(1010, 15, 30),
+             March = c(1005, 25, 180))
 
+tib
 
-pivot_wider(fish,
-            id_cols = species,
-            names_from = year,
-            values_from = catch)
+#read in data file on computer
+# change file path to path location on computer
+read.csv('data/LDWFBayAnchovy2007.csv')
 
-### piping  
-#Tidyverse has an operator `%>%` known as a pipe that is useful for when you want to do multiple actions to the same data. It takes the output of the left of the `%>%` and makes it the first argument of what is on the right. Allowing to reduce code and make things tidier. In newer versions of R, there is a base pipe `|>` that can be used as well.
+read_csv('data/LDWFBayAnchovy2007.csv')
 
+# read in data file from github
+# need to use raw file
+read_csv(url('https://raw.githubusercontent.com/BSC6926-B52-Fall2023/workshopScripts/main/data/LDWFBayAnchovy2007.csv'))
 
-# this code
-df = as_tibble(mtcars)
-df = filter(df, mpg > 20)
-df = mutate(df, color = 'red')
-df = select(df, mpg, cyl, color)
+# save dataframe or tibble as new csv
+write.csv(df, 'data/df.csv')
 
-head(df)
+write_csv(df, 'data/df.csv')
 
-# can become
-
-df = mtcars %>%
-  as_tibble()%>%
-  filter(mpg > 20)%>%
-  mutate(color = 'red')%>%
-  select(mpg, cyl, color)
-
-head(df)
-
-# or with base r
-df = mtcars |>
-  as_tibble()|>
-  filter(mpg > 20)|>
-  mutate(color = 'red')|>
-  select(mpg, cyl, color)
-
-head(df)
-
+# ## Exercises 
+# ### Complete following exercises and turn in r script on canvas
+# 1.    Make two vectors, object `a` containing the values 2, 3, 4, and 5 and object `b`containing the values 50, 100, 38, and 42.
+# 
+# 2.    Multiply object `a` by 3 and assign it to a new object, divide object `b` by 5 and assign it to a new object, then add the new two objects together. 
+# 
+# 3.    Create a new `data.frame`/`tibble` with the four objects created above
+# 
+# 4.    Save the `data.frame`/`tibble` created in exercise 3 as a .csv
+# 
+# 5.    Load in files a.csv and b.csv (found on [github](https://github.com/BSC6926-B52-Fall2023/workshopScripts/tree/main/data) and canvas) and assign each as an object.
