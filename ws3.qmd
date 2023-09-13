@@ -255,7 +255,7 @@ args2 |>
 ```
 
 ## Quarto/rmardown
-There are times when we want to inbed R into a document to make it easier to read. This can be done with quarto (`.qmd`) or rmarkdown (`.rmd`) files. These file types are more similar to word documents, have their own syntax, and can embed programming languages (not just R) into the document. These files can be output as html, pdf, or docx files. These are very flexible and can be used to make single documents, books, websites, and presentations. Resources about [quarto](https://quarto.org/docs/reference/) and [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html)
+There are times when we want to inbed R into a document to make it easier to read. This can be done with quarto (`.qmd`) or rmarkdown (`.rmd`) files. These file types are more similar to word documents, have their own syntax, and can embed programming languages (not just R) into the document. These files can be output as html, pdf, or docx files. These are very flexible and can be used to make single documents, books, websites, and presentations. Resources about [quarto](https://r4ds.hadley.nz/quarto) and [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html)
 
 For PDFs in [Quarto](https://quarto.org/docs/output-formats/pdf-basics.html) and [Rmarkdown](https://bookdown.org/yihui/rmarkdown/pdf-document.html). You will need to download some form of LaTex to write the PDFs. R recommends the following code
 

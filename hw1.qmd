@@ -1,0 +1,37 @@
+---
+title: "Homework 1"
+format: 
+  html:
+    toc: true
+    theme: yeti
+---
+
+## Instructions
+
+Please, using quarto or rmarkdown, answer the questions below. You can use the class notes, the recommended books, and other web materials to help answer the questions. You can work on the homework in groups, but please independently submit pdf document containing answers and code.
+
+**In two weeks (09/27/23 by 11:59pm)**, please submit your pdf file to CANVAS using the following filename structure LastName_HW1_Filetype_Date (e.g., Santos_HW1_R_20230927). Again, you can share and work together on the code, but independently, submit your answers to the short answer questions in your own words and as markdown text under each question. Here are links to resources about [quarto](https://r4ds.hadley.nz/quarto) and [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html).
+
+Please reach out if you have any questions about the hw or how to make a pdf using quarto or rmarkdown.
+
+## Data for questions
+
+For this homework, you will be using a submerged aquatic vegetation (SAV) dataset from FWC in Florida Bay. The dataset [rankinSAV.csv](https://github.com/BSC6926-B52-Fall2023/workshopScripts/blob/main/data/rankinSAV.csv) contains the proportional cover of three seagrass (TT = *Thalassia testudinum*, HW = *Halodule wrightii*, SF = *Syringodium filiforme*) and three macroalgae (HAL = *Halimeda*, BAT = *Batophora*, PEN = *Penicillis*) species in Rankin basin between 2012 and 2022. This data is on github and should be downloaded to complete the homework.
+
+## Questions
+
+1. (2 pts) Load the rankinSAV.csv dataset as a dataframe or tibble. Short answer question 1: What are the dimension of the dataset?
+
+2. (3 pts) Add 2 new columns to the dataframe/tibble. One should contain the sum of the cover of all of the seagrass species (total_seagrass), and the other should contain the the sum of the cover of all of the macroalgae species (total_macroalgae). Short answer question 2: What is the maximum value for total seagrass and total macroalgae and in what years did they occur?
+
+3. (2 pts) Create a new tibble/dataframe that contains only the year, total seagrass, and total macroalgae.
+
+4. (5 pts) Convert the new tibble/dataframe from question 3 into long format for the two SAV metrics and summarize the mean and SD for each taxonomic group in each year. Short answer question 3: What are the years with the highest and lowest cover for seagrass and macroalgae?
+
+5. (3 pts) Plot the mean cover for each year for all 6 species of SAV, with a different species in a different panel.
+
+6. (2 pts) Convert the percent cover of seagrass into three categories: low = \< 0.30, intermediate = 0.31-0.60, and high = \> 0.60.
+
+7.  (5 pts) Create a conditional (i.e. `TRUE`/`FALSE`) vector to compare if seagrass cover is higher compared to the year before. ***Hint** - this can be done with a for loop*
+
+8.  (3 pts) Plot the count of years where seagrass cover is higher than the year before and the count of years where seagrass cover is lower than the year before.

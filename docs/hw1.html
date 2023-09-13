@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BSC6926fall2023 - BSC 6926 B52 Fall 2023</title>
+<title>BSC6926fall2023 - Homework 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,7 +63,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -103,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./hw1.html" rel="" target="">
+    <a class="nav-link active" href="./hw1.html" rel="" target="" aria-current="page">
  <span class="menu-text">HW 1</span></a>
   </li>  
 </ul>
@@ -117,13 +117,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#data-for-questions" id="toc-data-for-questions" class="nav-link" data-scroll-target="#data-for-questions">Data for questions</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BSC 6926 B52 Fall 2023</h1>
+<h1 class="title">Homework 1</h1>
 </div>
 
 
@@ -138,33 +148,28 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="bsc-6926-b52-r-workshop-on-population-and-community-ecological-modeling" class="level4">
-<h4 class="anchored" data-anchor-id="bsc-6926-b52-r-workshop-on-population-and-community-ecological-modeling">BSC 6926 B52: R workshop on population and community ecological modeling</h4>
-<p>This is the course website for the R workshop that coincides with PCB 5423 (Advanced Ecology). This website will have the Rmarkdown lessons for each workshop. Find the course schedule and Syllabus <a href="sylb.html">here</a>. This course will be based in R and information about downloading R and Rstudio can be found <a href="comp.html">here</a>.</p>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>Please, using quarto or rmarkdown, answer the questions below. You can use the class notes, the recommended books, and other web materials to help answer the questions. You can work on the homework in groups, but please independently submit pdf document containing answers and code.</p>
+<p><strong>In two weeks (09/27/23 by 11:59pm)</strong>, please submit your pdf file to CANVAS using the following filename structure LastName_HW1_Filetype_Date (e.g., Santos_HW1_R_20230927). Again, you can share and work together on the code, but independently, submit your answers to the short answer questions in your own words and as markdown text under each question. Here are links to resources about <a href="https://r4ds.hadley.nz/quarto">quarto</a> and <a href="https://rmarkdown.rstudio.com/lesson-1.html">rmarkdown</a>.</p>
+<p>Please reach out if you have any questions about the hw or how to make a pdf using quarto or rmarkdown.</p>
 </section>
-<section id="class-resources" class="level3">
-<h3 class="anchored" data-anchor-id="class-resources">Class Resources</h3>
-<ul>
-<li><a href="https://fiu.zoom.us/j/94001884298?pwd=b25VZTh6eHFlOVdjRDhrbUV6OTBVZz09">Zoom link</a></li>
-<li><a href="https://github.com/BSC6926-B52-Fall2023/workshopScripts">Github repository for workshop R scripts</a></li>
-<li><a href="https://github.com/BSC6926-B52-Fall2023/BSC6926-B52-Fall2023.github.io">Website Github repository</a></li>
-<li>Textbook for R exercises (S) Stevens, M.H.H. 2010. A primer of ecology with R. ISBN 978-0-387-89881-0 (Electronically available at FIU Library) <a href="https://hankstevens.github.io/Primer-of-Ecology/">E-book version</a></li>
-</ul>
+<section id="data-for-questions" class="level2">
+<h2 class="anchored" data-anchor-id="data-for-questions">Data for questions</h2>
+<p>For this homework, you will be using a submerged aquatic vegetation (SAV) dataset from FWC in Florida Bay. The dataset <a href="https://github.com/BSC6926-B52-Fall2023/workshopScripts/blob/main/data/rankinSAV.csv">rankinSAV.csv</a> contains the proportional cover of three seagrass (TT = <em>Thalassia testudinum</em>, HW = <em>Halodule wrightii</em>, SF = <em>Syringodium filiforme</em>) and three macroalgae (HAL = <em>Halimeda</em>, BAT = <em>Batophora</em>, PEN = <em>Penicillis</em>) species in Rankin basin between 2012 and 2022. This data is on github and should be downloaded to complete the homework.</p>
 </section>
-<section id="r-resources" class="level3">
-<h3 class="anchored" data-anchor-id="r-resources">R Resources</h3>
-<ul>
-<li>R for Data Science by Hadley Wickham and Garret Grolemund – An introduction to programming with R: <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a><br>
-</li>
-<li>Quick-R by datacamp: Quick overview on R programming and statistical approaches. There are more tutorials, but you will be required to register<br>
-</li>
-<li>RStudio Cloud Training Exercises: <a href="https://rstudio.cloud/learn/primers" class="uri">https://rstudio.cloud/learn/primers</a><br>
-</li>
-<li>Virtual Ecology Portal/EcoVirtual R Package: Website that provides various examples of population and community models that will be discussed in class and the workshop. There is also an R package (EcoVirtual) you can use to run various models included on this website: <a href="http://ecovirtual.ib.usp.br/doku.php?id=start" class="uri">http://ecovirtual.ib.usp.br/doku.php?id=start</a><br>
-</li>
-<li>ModernDive: Introductory book on R and statistical inference: <a href="https://moderndive.com/index.html" class="uri">https://moderndive.com/index.html</a></li>
-<li>Rstudio: learn R https://education.rstudio.com/learn/beginner/</li>
-</ul>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ol type="1">
+<li><p>(2 pts) Load the rankinSAV.csv dataset as a dataframe or tibble. Short answer question 1: What are the dimension of the dataset?</p></li>
+<li><p>(3 pts) Add 2 new columns to the dataframe/tibble. One should contain the sum of the cover of all of the seagrass species (total_seagrass), and the other should contain the the sum of the cover of all of the macroalgae species (total_macroalgae). Short answer question 2: What is the maximum value for total seagrass and total macroalgae and in what years did they occur?</p></li>
+<li><p>(2 pts) Create a new tibble/dataframe that contains only the year, total seagrass, and total macroalgae.</p></li>
+<li><p>(5 pts) Convert the new tibble/dataframe from question 3 into long format for the two SAV metrics and summarize the mean and SD for each taxonomic group in each year. Short answer question 3: What are the years with the highest and lowest cover for seagrass and macroalgae?</p></li>
+<li><p>(3 pts) Plot the mean cover for each year for all 6 species of SAV, with a different species in a different panel.</p></li>
+<li><p>(2 pts) Convert the percent cover of seagrass into three categories: low = &lt; 0.30, intermediate = 0.31-0.60, and high = &gt; 0.60.</p></li>
+<li><p>(5 pts) Create a conditional (i.e.&nbsp;<code>TRUE</code>/<code>FALSE</code>) vector to compare if seagrass cover is higher compared to the year before. <em><strong>Hint</strong> - this can be done with a for loop</em></p></li>
+<li><p>(3 pts) Plot the count of years where seagrass cover is higher than the year before and the count of years where seagrass cover is lower than the year before.</p></li>
+</ol>
 
 
 </section>

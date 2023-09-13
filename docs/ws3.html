@@ -137,7 +137,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">WS 3</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./hw1.html" rel="" target="">
+ <span class="menu-text">HW 1</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -1329,7 +1335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="quartormardown" class="level2">
 <h2 class="anchored" data-anchor-id="quartormardown">Quarto/rmardown</h2>
-<p>There are times when we want to inbed R into a document to make it easier to read. This can be done with quarto (<code>.qmd</code>) or rmarkdown (<code>.rmd</code>) files. These file types are more similar to word documents, have their own syntax, and can embed programming languages (not just R) into the document. These files can be output as html, pdf, or docx files. These are very flexible and can be used to make single documents, books, websites, and presentations. Resources about <a href="https://quarto.org/docs/reference/">quarto</a> and <a href="https://rmarkdown.rstudio.com/lesson-1.html">rmarkdown</a></p>
+<p>There are times when we want to inbed R into a document to make it easier to read. This can be done with quarto (<code>.qmd</code>) or rmarkdown (<code>.rmd</code>) files. These file types are more similar to word documents, have their own syntax, and can embed programming languages (not just R) into the document. These files can be output as html, pdf, or docx files. These are very flexible and can be used to make single documents, books, websites, and presentations. Resources about <a href="https://r4ds.hadley.nz/quarto">quarto</a> and <a href="https://rmarkdown.rstudio.com/lesson-1.html">rmarkdown</a></p>
 <p>For PDFs in <a href="https://quarto.org/docs/output-formats/pdf-basics.html">Quarto</a> and <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html">Rmarkdown</a>. You will need to download some form of LaTex to write the PDFs. R recommends the following code</p>
 <div class="cell" data-hash="ws3_cache/html/unnamed-chunk-8_6838aaf9f2ce9201cfb8cd4d3d6debed">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'tinytex'</span>)</span>
