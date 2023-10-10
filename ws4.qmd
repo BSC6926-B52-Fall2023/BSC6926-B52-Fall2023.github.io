@@ -1,7 +1,7 @@
 ---
 title: "Workshop 4: Density independent models"
 author: "BSC 6926 B53"
-date: "10/2/2023"
+date: "10/3/2023"
 format: 
   html:
     toc: true
