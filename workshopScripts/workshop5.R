@@ -223,7 +223,7 @@ pop3
 
 #Plot results
 ggplot(popAll, aes(time, Nt, color = as.factor(N0))) +
-  geom_line(size = 1)+
+  geom_line(linewidth = 1)+
   labs(y = expression(italic(N[t])),
        x = 'Time',
        color = expression(italic(N[0])))+
@@ -256,7 +256,7 @@ pop4
 
 #Plot the results 
 ggplot(pop4, aes(time, Nt, color = as.factor(rd))) +
-  geom_line(size = 1)+
+  geom_line(linewidth = 1)+
   labs(y = expression(italic(N[t])),
        x = 'Time',
        color = expression(italic(r[d])))+
