@@ -5,6 +5,7 @@ format:
     toc: true
     theme: yeti
 ---
+[Exercise solutions](ExSolutions/Key_hw1.html)
 
 ## Instructions
 

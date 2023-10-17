@@ -1,0 +1,145 @@
+---
+title: "Homework 1 - Solutions"
+format: 
+  html:
+    toc: true
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = T, cache = T)
+```
+
+
+1.  (2 pts) Load the rankinSAV.csv dataset as a dataframe or tibble. Short answer question 1: What are the dimension of the dataset?
+
+```{r}
+library(tidyverse)
+
+df = read_csv('data/rankinSAV.csv')
+dim(df)
+
+```
+Short answer: `r nrow(df)` rows and `r ncol(df)` columns
+
+2.  (3 pts) Add 2 new columns to the dataframe/tibble. One should contain the sum of the cover of all of the seagrass species (total_seagrass), and the other should contain the the sum of the cover of all of the macroalgae species (total_macroalgae). Short answer question 2: What is the maximum value for total seagrass and total macroalgae and in what years did they occur?
+
+```{r}
+df = read_csv('data/rankinSAV.csv') |> 
+  mutate(total_seagrass = TT + HW + SF,
+         total_macroalgae = HAL + BAT + PEN) 
+
+# total seagrass
+ts = df |> 
+  filter(total_seagrass == max(total_seagrass, na.rm =T))
+
+ts
+
+# total seagrass
+tm = df |> 
+  filter(total_macroalgae == max(total_macroalgae, na.rm =T))
+
+tm
+```
+
+Short answer: The max total seagrass was `r ts$total_seagrass` in `r ts$YEAR`. The max total macroalgae was `r tm$total_macroalgae` in `r tm$YEAR`.
+
+3.  (2 pts) Create a new tibble/dataframe that contains only the year, total seagrass, and total macroalgae.
+
+```{r}
+d = df |> 
+  select(YEAR, total_seagrass, total_macroalgae)
+```
+
+
+4.  (5 pts) Convert the new tibble/dataframe from question 3 into long format for the two SAV metrics and summarize the mean and SD for each taxonomic group in each year. Short answer question 3: What are the years with the highest and lowest cover for seagrass and macroalgae?
+
+```{r}
+dm = d |> 
+  pivot_longer(total_seagrass:total_macroalgae, 
+               names_to = 'SAV', values_to = 'cover') |> 
+  group_by(YEAR, SAV) |> 
+  summarize(mean = mean(cover, na.rm = T),
+            sd = sd(cover, na.rm = T))
+
+dm
+
+sg = dm |> filter(SAV == 'total_seagrass')
+
+sg$YEAR[which.max(sg$mean)]
+sg$YEAR[which.min(sg$mean)]
+
+ma = dm |> filter(SAV == 'total_macroalgae')
+
+ma$YEAR[which.max(ma$mean)]
+ma$YEAR[which.min(ma$mean)]
+```
+
+Short answer: The year with the highest seagrass cover is `r sg$YEAR[which.max(sg$mean)]` and lowest is `r sg$YEAR[which.min(sg$mean)]`. The year with the highest macroalgae cover is `r ma$YEAR[which.max(ma$mean)]` and lowest is `r ma$YEAR[which.min(ma$mean)]`.
+
+5.  (3 pts) Plot the mean cover for each year for all 6 species of SAV, with a different species in a different panel.
+```{r}
+lg = df |> 
+  group_by(YEAR) |> 
+  summarize(across(TT:PEN,mean) )|> 
+  pivot_longer(TT:PEN, names_to = 'SAV', values_to = 'cover')
+
+ggplot(lg, aes(YEAR, cover, color = SAV)) +
+  geom_point() +
+  geom_line(size = 1) +
+  labs(x = 'Time', y = 'SAV cover', color = 'Species') +
+  facet_wrap(~SAV)+
+  theme_bw()
+```
+
+
+6.  (2 pts) Convert the percent cover of seagrass into three categories: low = \< 0.30, intermediate = 0.31-0.60, and high = \> 0.60.
+
+```{r}
+df = df |> 
+  mutate(sg = case_when(
+    total_seagrass <= 0.30 ~ 'low',
+    between(total_seagrass, 0.30,0.60) ~ 'intermediate',
+    total_seagrass > 0.60 ~ 'high'
+  ))
+```
+
+
+7.  (5 pts) Create a conditional (i.e. `TRUE`/`FALSE`) vector to compare if seagrass cover is higher compared to the year before. ***Hint** - this can be done with a for loop*
+
+```{r}
+
+# for loop
+s = df |> 
+  group_by(YEAR) |> 
+  summarize(sg = mean(total_seagrass)) |> 
+  mutate(comp = NA)
+for (i in 2:nrow(s)){
+  s$comp[i] = s$sg[i] > s$sg[i-1]
+}
+  
+
+#dplyr
+sg = df |> 
+  group_by(YEAR) |> 
+  summarize(sg = mean(total_seagrass)) |> 
+  mutate(comp = sg>lag(sg))
+
+
+
+```
+
+
+8.  (3 pts) Plot the count of years where seagrass cover is higher than the year before and the count of years where seagrass cover is lower than the year before.
+```{r}
+sgc = s |> 
+  count(comp) |> 
+  drop_na()
+
+ggplot(sgc, aes(comp, n, fill = comp)) +
+  geom_col() +
+  labs(x = 'SG cover(t) > sG cover(t-1)', y = 'count') +
+  theme_bw()+
+  theme(legend.position = 'none')
+```
+
