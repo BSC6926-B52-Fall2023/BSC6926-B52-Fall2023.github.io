@@ -1,0 +1,67 @@
+---
+title: "Homework 2"
+format: 
+  html:
+    toc: true
+    theme: yeti
+---
+
+## Instructions
+
+Please, using quarto or rmarkdown, answer the questions below. You can use the class notes, the recommended books, and other web materials to help answer the questions. You can work on the homework in groups, but please independently submit pdf document containing answers and code.
+
+**In two weeks (10/31/23 by 11:59pm)**, please submit your pdf file to CANVAS using the following filename structure LastName_HW2_Filetype_Date (e.g., Santos_HW2_R_20230927). Again, you can share and work together on the code, but independently, submit your answers to the short answer questions in your own words and as markdown text under each question. Here are links to resources about [quarto](https://r4ds.hadley.nz/quarto) and [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html).
+
+Please reach out if you have any questions about the hw or how to make a pdf using quarto or rmarkdown.
+
+## Data for questions
+
+For this section 1 and 2 of this homework, you will use a dataset from the `lterdatasampler` R package <https://lter.github.io/lterdatasampler/> called "and_vertebrates". The `lterdatasampler` R package was created by the NSF LTER program <https://lternet.edu> to provide data examples for educational purposes. This dataset consists of the populations of Coastal giant salamander (*Dicamptodon tenebrosus*) in two standard reaches of Mack Creek in the H.J. Andrews Experimental Forest that have been monitored since 1987. The two standard reaches are in a section of clear-cut forest (ca. 1963) and an upstream old-growth forest (\>500 years). Sub-reaches are sampled with 2-pass electrofishing, and all individuals are measured and weighed.
+
+### Section 1 (13 pts)
+
+1.  Upload "and_vertebrates" into R-Studio (remember you have to download the lterdatasampler R package before). Using R, create a new dataset by selecting only salamander data from the lower reach section, then calculate abundance (total number of individuals collected) by sitecode and year for Coastal giant salamander. Please, use "Nt" to name the column with the abundance data. Here are details about the "and_vertebrates" data useful to answer this question (look for info in the "Table Column Descriptions" tab in Data Entities - <https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-and.4027.14> (3 pts).
+
+2.  Plot annual estimates of salamander abundance per sitecode (2 pts).
+
+3.  Short Essay Question: How do the temporal trends of Coastal giant salamander between the sitecode compare (3 pts)?
+
+4.  Using R, calculate lambda from one year to the next (i.e., for each time step) for the two reach (sitecode) you selected. Try using either a for-loop or functions (1 pt).
+
+5.  Calculate the mean(λ) and sd(λ) for the two reaches using your calculation from Q1.4. Remember to use the geometric mean and its standard deviation (1 pt).
+
+6.  Using ggplot, plot the lambda for each year. Add a horizontal line for the mean(λ) calculated in question 5 and ribbon around the line to indicate the sd(λ) (3 pt).
+
+### Section 2 (22 pts)
+
+1.  Using the same dataset from Section 1, estimate $K$ from your $\lambda$ and abundance estimates for both reaches (3 pts). Hint: Remember the linear relationship between density and per-capita growth rate in the density-dependent model discussed in class and the workshop.
+
+2.  Using a discrete density-dependent growth model, project the population growth for salamander in both reaches to 150 years based on the carrying capacity values estimated in Q2 and a starting population size of 50 individuals. Hint: $1 + r_d = \lambda$; See Gotelli pages 35-37 and pages Stevens 62-68 (3 pts).
+
+3.  Using ggplot, plot the population projections for each reach (1 pts).
+
+4.  Short essay question: How do the projections for each reach differ? Did the population get as far as the carrying capacity? Why or why not? If not, how many years are required to reach the carrying capacity? When at carrying capacity, do the population fluctuate around K? Why or Why not? (5 pts)
+
+5.  Project the population of salamander in the two reaches for 150 years using a discrete density-dependent model with environmental stochasticity. Run the projections 50 times for each reach (i.e., 50 projections per reach) (5 pts).\
+
+    -   Use the 50 as $N_0$, carrying capacity ($K$) values estimated in Q2, and at each time step, use a randomly determined $r_d$ based on the mean and standard deviation of $\lambda$ calculated in Q1.5 -- Hint: rtruncnorm() function in R and for loops (e.g., Wickham and Grolemund Chapter 17).
+
+6.  Using ggplot, plot a histogram of the population size after 150 year for each reach with a vertical line of the carrying capacity (1 pts).
+
+7.  Short essay question: How does the population size at time 150 compare between each reach? How do the estimates relate to the carrying capacity? (5 pts).
+
+### Section 3 (19 pts)
+
+![](insect_model.png)
+
+1. Convert the loop diagram (life cycle graph) above into a projection matrix (1 pt).
+
+2.  Create a starting population vector based on the life stages of this insect species: egg (N = 0), larvae (N = 30), adult (N = 10). Project the population up to 50 years using the starting population vector and the projection matrix you created (hint: A%\*%n(t); See Stevens Chapter 2 pages 34-40) (5 pts).
+
+3.  Plot your results using ggplot, popbio, or base R plotting functions. Plot the projection for each stage class (2 pts).
+
+4.  Short essay question: Looking at the plot from Q3, did the population projection reach a stable stage distribution? Why or why not? What could you tell about the fate of the population after 50 years? (5 pts).
+
+5.  Based on the project matrix above, calculate lambda and calculate the stable stage distribution (1 pt).
+
+6.  Short essay question: What is the proportion between the stages at SSD? What stage is the dominant stage of the population after the stable stage distribution is reached? Why? (5 pts).

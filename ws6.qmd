@@ -382,3 +382,5 @@ good = \begin{bmatrix}
 0&3 \\
 0.1&0.8
 \end{bmatrix}$$
+
+[Exercise solutions](ExSolutions/Key_ws6.html)

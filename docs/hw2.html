@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BSC6926fall2023 - About</title>
+<title>BSC6926fall2023 - Homework 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -93,11 +59,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -153,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">HW 1</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./hw2.html" rel="" target="">
+    <a class="nav-link active" href="./hw2.html" rel="" target="" aria-current="page">
  <span class="menu-text">HW 2</span></a>
   </li>  
 </ul>
@@ -167,13 +135,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#data-for-questions" id="toc-data-for-questions" class="nav-link" data-scroll-target="#data-for-questions">Data for questions</a>
+  <ul class="collapse">
+  <li><a href="#section-1-13-pts" id="toc-section-1-13-pts" class="nav-link" data-scroll-target="#section-1-13-pts">Section 1 (13 pts)</a></li>
+  <li><a href="#section-2-22-pts" id="toc-section-2-22-pts" class="nav-link" data-scroll-target="#section-2-22-pts">Section 2 (22 pts)</a></li>
+  <li><a href="#section-3-19-pts" id="toc-section-3-19-pts" class="nav-link" data-scroll-target="#section-3-19-pts">Section 3 (19 pts)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Homework 2</h1>
 </div>
 
 
@@ -188,15 +170,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>About this site</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>Please, using quarto or rmarkdown, answer the questions below. You can use the class notes, the recommended books, and other web materials to help answer the questions. You can work on the homework in groups, but please independently submit pdf document containing answers and code.</p>
+<p><strong>In two weeks (10/31/23 by 11:59pm)</strong>, please submit your pdf file to CANVAS using the following filename structure LastName_HW2_Filetype_Date (e.g., Santos_HW2_R_20230927). Again, you can share and work together on the code, but independently, submit your answers to the short answer questions in your own words and as markdown text under each question. Here are links to resources about <a href="https://r4ds.hadley.nz/quarto">quarto</a> and <a href="https://rmarkdown.rstudio.com/lesson-1.html">rmarkdown</a>.</p>
+<p>Please reach out if you have any questions about the hw or how to make a pdf using quarto or rmarkdown.</p>
+</section>
+<section id="data-for-questions" class="level2">
+<h2 class="anchored" data-anchor-id="data-for-questions">Data for questions</h2>
+<p>For this section 1 and 2 of this homework, you will use a dataset from the <code>lterdatasampler</code> R package <a href="https://lter.github.io/lterdatasampler/" class="uri">https://lter.github.io/lterdatasampler/</a> called “and_vertebrates”. The <code>lterdatasampler</code> R package was created by the NSF LTER program <a href="https://lternet.edu" class="uri">https://lternet.edu</a> to provide data examples for educational purposes. This dataset consists of the populations of Coastal giant salamander (<em>Dicamptodon tenebrosus</em>) in two standard reaches of Mack Creek in the H.J. Andrews Experimental Forest that have been monitored since 1987. The two standard reaches are in a section of clear-cut forest (ca. 1963) and an upstream old-growth forest (&gt;500 years). Sub-reaches are sampled with 2-pass electrofishing, and all individuals are measured and weighed.</p>
+<section id="section-1-13-pts" class="level3">
+<h3 class="anchored" data-anchor-id="section-1-13-pts">Section 1 (13 pts)</h3>
+<ol type="1">
+<li><p>Upload “and_vertebrates” into R-Studio (remember you have to download the lterdatasampler R package before). Using R, create a new dataset by selecting only salamander data from the lower reach section, then calculate abundance (total number of individuals collected) by sitecode and year for Coastal giant salamander. Please, use “Nt” to name the column with the abundance data. Here are details about the “and_vertebrates” data useful to answer this question (look for info in the “Table Column Descriptions” tab in Data Entities - <a href="https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-and.4027.14" class="uri">https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-and.4027.14</a> (3 pts).</p></li>
+<li><p>Plot annual estimates of salamander abundance per sitecode (2 pts).</p></li>
+<li><p>Short Essay Question: How do the temporal trends of Coastal giant salamander between the sitecode compare (3 pts)?</p></li>
+<li><p>Using R, calculate lambda from one year to the next (i.e., for each time step) for the two reach (sitecode) you selected. Try using either a for-loop or functions (1 pt).</p></li>
+<li><p>Calculate the mean(λ) and sd(λ) for the two reaches using your calculation from Q1.4. Remember to use the geometric mean and its standard deviation (1 pt).</p></li>
+<li><p>Using ggplot, plot the lambda for each year. Add a horizontal line for the mean(λ) calculated in question 5 and ribbon around the line to indicate the sd(λ) (3 pt).</p></li>
+</ol>
+</section>
+<section id="section-2-22-pts" class="level3">
+<h3 class="anchored" data-anchor-id="section-2-22-pts">Section 2 (22 pts)</h3>
+<ol type="1">
+<li><p>Using the same dataset from Section 1, estimate <span class="math inline">\(K\)</span> from your <span class="math inline">\(\lambda\)</span> and abundance estimates for both reaches (3 pts). Hint: Remember the linear relationship between density and per-capita growth rate in the density-dependent model discussed in class and the workshop.</p></li>
+<li><p>Using a discrete density-dependent growth model, project the population growth for salamander in both reaches to 150 years based on the carrying capacity values estimated in Q2 and a starting population size of 50 individuals. Hint: <span class="math inline">\(1 + r_d = \lambda\)</span>; See Gotelli pages 35-37 and pages Stevens 62-68 (3 pts).</p></li>
+<li><p>Using ggplot, plot the population projections for each reach (1 pts).</p></li>
+<li><p>Short essay question: How do the projections for each reach differ? Did the population get as far as the carrying capacity? Why or why not? If not, how many years are required to reach the carrying capacity? When at carrying capacity, do the population fluctuate around K? Why or Why not? (5 pts)</p></li>
+<li><p>Project the population of salamander in the two reaches for 150 years using a discrete density-dependent model with environmental stochasticity. Run the projections 50 times for each reach (i.e., 50 projections per reach) (5 pts).<br>
+</p>
+<ul>
+<li>Use the 50 as <span class="math inline">\(N_0\)</span>, carrying capacity (<span class="math inline">\(K\)</span>) values estimated in Q2, and at each time step, use a randomly determined <span class="math inline">\(r_d\)</span> based on the mean and standard deviation of <span class="math inline">\(\lambda\)</span> calculated in Q1.5 – Hint: rtruncnorm() function in R and for loops (e.g., Wickham and Grolemund Chapter 17).</li>
+</ul></li>
+<li><p>Using ggplot, plot a histogram of the population size after 150 year for each reach with a vertical line of the carrying capacity (1 pts).</p></li>
+<li><p>Short essay question: How does the population size at time 150 compare between each reach? How do the estimates relate to the carrying capacity? (5 pts).</p></li>
+</ol>
+</section>
+<section id="section-3-19-pts" class="level3">
+<h3 class="anchored" data-anchor-id="section-3-19-pts">Section 3 (19 pts)</h3>
+<p><img src="insect_model.png" class="img-fluid"></p>
+<ol type="1">
+<li><p>Convert the loop diagram (life cycle graph) above into a projection matrix (1 pt).</p></li>
+<li><p>Create a starting population vector based on the life stages of this insect species: egg (N = 0), larvae (N = 30), adult (N = 10). Project the population up to 50 years using the starting population vector and the projection matrix you created (hint: A%*%n(t); See Stevens Chapter 2 pages 34-40) (5 pts).</p></li>
+<li><p>Plot your results using ggplot, popbio, or base R plotting functions. Plot the projection for each stage class (2 pts).</p></li>
+<li><p>Short essay question: Looking at the plot from Q3, did the population projection reach a stable stage distribution? Why or why not? What could you tell about the fate of the population after 50 years? (5 pts).</p></li>
+<li><p>Based on the project matrix above, calculate lambda and calculate the stable stage distribution (1 pt).</p></li>
+<li><p>Short essay question: What is the proportion between the stages at SSD? What stage is the dominant stage of the population after the stable stage distribution is reached? Why? (5 pts).</p></li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
