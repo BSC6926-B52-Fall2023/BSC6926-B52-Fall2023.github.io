@@ -143,8 +143,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
   <li><a href="#data-for-questions" id="toc-data-for-questions" class="nav-link" data-scroll-target="#data-for-questions">Data for questions</a>
   <ul class="collapse">
-  <li><a href="#section-1-13-pts" id="toc-section-1-13-pts" class="nav-link" data-scroll-target="#section-1-13-pts">Section 1 (13 pts)</a></li>
-  <li><a href="#section-2-22-pts" id="toc-section-2-22-pts" class="nav-link" data-scroll-target="#section-2-22-pts">Section 2 (22 pts)</a></li>
+  <li><a href="#section-1-15-pts" id="toc-section-1-15-pts" class="nav-link" data-scroll-target="#section-1-15-pts">Section 1 (15 pts)</a></li>
+  <li><a href="#section-2-23-pts" id="toc-section-2-23-pts" class="nav-link" data-scroll-target="#section-2-23-pts">Section 2 (23 pts)</a></li>
   <li><a href="#section-3-19-pts" id="toc-section-3-19-pts" class="nav-link" data-scroll-target="#section-3-19-pts">Section 3 (19 pts)</a></li>
   </ul></li>
   </ul>
@@ -179,19 +179,19 @@ ul.task-list li input[type="checkbox"] {
 <section id="data-for-questions" class="level2">
 <h2 class="anchored" data-anchor-id="data-for-questions">Data for questions</h2>
 <p>For this section 1 and 2 of this homework, you will use a dataset from the <code>lterdatasampler</code> R package <a href="https://lter.github.io/lterdatasampler/" class="uri">https://lter.github.io/lterdatasampler/</a> called “and_vertebrates”. The <code>lterdatasampler</code> R package was created by the NSF LTER program <a href="https://lternet.edu" class="uri">https://lternet.edu</a> to provide data examples for educational purposes. This dataset consists of the populations of Coastal giant salamander (<em>Dicamptodon tenebrosus</em>) in two standard reaches of Mack Creek in the H.J. Andrews Experimental Forest that have been monitored since 1987. The two standard reaches are in a section of clear-cut forest (ca. 1963) and an upstream old-growth forest (&gt;500 years). Sub-reaches are sampled with 2-pass electrofishing, and all individuals are measured and weighed.</p>
-<section id="section-1-13-pts" class="level3">
-<h3 class="anchored" data-anchor-id="section-1-13-pts">Section 1 (13 pts)</h3>
+<section id="section-1-15-pts" class="level3">
+<h3 class="anchored" data-anchor-id="section-1-15-pts">Section 1 (15 pts)</h3>
 <ol type="1">
 <li><p>Upload “and_vertebrates” into R-Studio (remember you have to download the lterdatasampler R package before). Using R, create a new dataset by selecting only salamander data from the lower reach section, then calculate abundance (total number of individuals collected) by sitecode and year for Coastal giant salamander. Please, use “Nt” to name the column with the abundance data. Here are details about the “and_vertebrates” data useful to answer this question (look for info in the “Table Column Descriptions” tab in Data Entities - <a href="https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-and.4027.14" class="uri">https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-and.4027.14</a> (3 pts).</p></li>
 <li><p>Plot annual estimates of salamander abundance per sitecode (2 pts).</p></li>
-<li><p>Short Essay Question: How do the temporal trends of Coastal giant salamander between the sitecode compare (3 pts)?</p></li>
+<li><p>Short Essay Question: How do the temporal trends of Coastal giant salamander between the sitecode compare (5 pts)?</p></li>
 <li><p>Using R, calculate lambda from one year to the next (i.e., for each time step) for the two reach (sitecode) you selected. Try using either a for-loop or functions (1 pt).</p></li>
 <li><p>Calculate the mean(λ) and sd(λ) for the two reaches using your calculation from Q1.4. Remember to use the geometric mean and its standard deviation (1 pt).</p></li>
 <li><p>Using ggplot, plot the lambda for each year. Add a horizontal line for the mean(λ) calculated in question 5 and ribbon around the line to indicate the sd(λ) (3 pt).</p></li>
 </ol>
 </section>
-<section id="section-2-22-pts" class="level3">
-<h3 class="anchored" data-anchor-id="section-2-22-pts">Section 2 (22 pts)</h3>
+<section id="section-2-23-pts" class="level3">
+<h3 class="anchored" data-anchor-id="section-2-23-pts">Section 2 (23 pts)</h3>
 <ol type="1">
 <li><p>Using the same dataset from Section 1, estimate <span class="math inline">\(K\)</span> from your <span class="math inline">\(\lambda\)</span> and abundance estimates for both reaches (3 pts). Hint: Remember the linear relationship between density and per-capita growth rate in the density-dependent model discussed in class and the workshop.</p></li>
 <li><p>Using a discrete density-dependent growth model, project the population growth for salamander in both reaches to 150 years based on the carrying capacity values estimated in Q2 and a starting population size of 50 individuals. Hint: <span class="math inline">\(1 + r_d = \lambda\)</span>; See Gotelli pages 35-37 and pages Stevens 62-68 (3 pts).</p></li>
@@ -202,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Use the 50 as <span class="math inline">\(N_0\)</span>, carrying capacity (<span class="math inline">\(K\)</span>) values estimated in Q2, and at each time step, use a randomly determined <span class="math inline">\(r_d\)</span> based on the mean and standard deviation of <span class="math inline">\(\lambda\)</span> calculated in Q1.5 – Hint: rtruncnorm() function in R and for loops (e.g., Wickham and Grolemund Chapter 17).</li>
 </ul></li>
-<li><p>Using ggplot, plot a histogram of the population size after 150 year for each reach with a vertical line of the carrying capacity (1 pts).</p></li>
+<li><p>Using ggplot, plot a histogram (or density plot) of the population size after 150 year for each reach with a vertical line of the carrying capacity (1 pts).</p></li>
 <li><p>Short essay question: How does the population size at time 150 compare between each reach? How do the estimates relate to the carrying capacity? (5 pts).</p></li>
 </ol>
 </section>
