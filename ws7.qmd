@@ -2,10 +2,9 @@
 title: "Workshop 7: Demographic matrix models"
 author: "BSC 6926 B53"
 date: "10/31/2023"
-output: 
-  html_document:
+format: 
+  html:
     toc: true
-    toc_float: true
     theme: yeti
 ---
 
