@@ -392,6 +392,6 @@ ggplot(df, aes(rank, cumsum, color = site))+
 ## Exercises 
 1. Using the Calcasieu seine dataset, calculate the species richness for each month at each month and plot over the year. 
 
-2. Calculate the average Shannon and Simpson indeces for the fall (Sep-Nov) and Spring (March-May) for site 30. 
+2. Calculate the average Shannon and Simpson indices for the fall (Sep-Nov) and Spring (March-May) for site 30. 
 
 3. _Challenge_: Calculate the average species accumulation curve for site 16 and site 28. Plot your results.

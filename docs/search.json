@@ -585,6 +585,6 @@
     "href": "ws7.html#exercises",
     "title": "Workshop 7: Demographic matrix models",
     "section": "Exercises",
-    "text": "Exercises\n\nUsing the Calcasieu seine dataset, calculate the species richness for each month at each month and plot over the year.\nCalculate the average Shannon and Simpson indeces for the fall (Sep-Nov) and Spring (March-May) for site 30.\nChallenge: Calculate the average species accumulation curve for site 16 and site 28. Plot your results."
+    "text": "Exercises\n\nUsing the Calcasieu seine dataset, calculate the species richness for each month at each month and plot over the year.\nCalculate the average Shannon and Simpson indices for the fall (Sep-Nov) and Spring (March-May) for site 30.\nChallenge: Calculate the average species accumulation curve for site 16 and site 28. Plot your results."
   }
 ]
