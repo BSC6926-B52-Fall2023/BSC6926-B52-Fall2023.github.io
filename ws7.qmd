@@ -17,9 +17,9 @@ This workshop discusses working with community data.\
 
 R script: [github](https://github.com/BSC6926-B52-Fall2023/workshopScripts/blob/main/workshop7.R)
 
-[R script of workshop 7](workshop7.R)
+[R script of workshop 7](workshopScripts/workshop7.R)
 
-[data](https://raw.githubusercontent.com/PCB5423/BSC6926_workshopScripts/master/data/Calcasieu.csv)
+[data](https://github.com/BSC6926-B52-Fall2023/workshopScripts/blob/main/data/Calcasieu.csv)
 
 
 ## Community Data
