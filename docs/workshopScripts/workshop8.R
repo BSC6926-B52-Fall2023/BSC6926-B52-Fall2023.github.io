@@ -69,7 +69,7 @@ gammaDiv = length(unique(marsh_l$Species))
 
 # calculate beta diversity
 betaDiv = marsh_div |> 
-  group_by(site, date) |> 
+  group_by(month) |> 
   summarise(alpha = mean(richness, na.rm = TRUE),
             gamma = gammaDiv,
             beta_a = gamma - alpha)
@@ -77,19 +77,18 @@ betaDiv = marsh_div |>
 # plot 
 library(ggpubr)
 
-a = ggplot(betaDiv, aes(date, alpha, color = site, group = site))+
+a = ggplot(betaDiv, aes(month, alpha))+
   geom_point()+
   geom_line()+
   scale_y_continuous(limits = c(0,60))+
-  labs(x = 'date', y = expression(alpha ~ 'diversity'), 
-       color = 'site')+
+  labs(x = 'month', y = expression(alpha ~ 'diversity'))+
   theme_bw()
 
-b = ggplot(betaDiv, aes(date, beta_a, color = site, group = site))+
+b = ggplot(betaDiv, aes(month, beta_a))+
   geom_point()+
   geom_line()+
   scale_y_continuous(limits = c(0,60))+
-  labs(x = 'date', y = expression(beta ~ 'diversity'), color = 'site')+
+  labs(x = 'month', y = expression(beta ~ 'diversity'))+
   theme_bw()
 
 ggarrange(a,b,nrow =1, common.legend = T,align = 'h')
@@ -105,19 +104,18 @@ betaDiv = betaDiv |>
   mutate(beta_m = gamma/alpha)
 
 
-b = ggplot(betaDiv, aes(date, beta_a, color = site, group = site))+
+b = ggplot(betaDiv, aes(month, beta_a))+
   geom_point()+
   geom_line()+
   scale_y_continuous(limits = c(0,60))+
-  labs(x = 'date', y = expression('Additive'~ beta ~ 'diversity'), 
-       color = 'site')+
+  labs(x = 'month', y = expression('Additive'~ beta ~ 'diversity'))+
   theme_bw()
 
-m = ggplot(betaDiv, aes(date, beta_m, color = site, group = site))+
+m = ggplot(betaDiv, aes(month, beta_m))+
   geom_point()+
   geom_line()+
   scale_y_continuous(limits = c(0,60))+
-  labs(x = 'date', y = expression('Multiplicative'~beta ~ 'diversity'), color = 'site')+
+  labs(x = 'month', y = expression('Multiplicative'~beta ~ 'diversity'))+
   theme_bw()
 
 ggarrange(b,m,nrow =1, common.legend = T,align = 'h')
