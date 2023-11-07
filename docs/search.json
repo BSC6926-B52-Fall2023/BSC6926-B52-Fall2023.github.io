@@ -627,6 +627,6 @@
     "href": "ws8.html#exercises",
     "title": "Workshop 5: Density independent models",
     "section": "Exercises",
-    "text": "Exercises\nFor these exercises use the LDWF Pontchartrain seine sampling dataset. This dataset is the abundance for each species (in wide format) for 6 sites over 1 date.\n\nUsing the Pontchartrain dataset calculate the mean and SD for species richness, Shannon, Simpson, and inverse Simpson for each sampling site.\nPlot the dominance (Whittiker) and K-dominance curves for each site.\nPlot the \\(\\alpha\\), \\(\\beta\\), and \\(\\gamma\\) diversity for each site for each sampling date in 2007. Use either additive or multiplicative \\(\\beta\\) diversity. Plot diversity over time.\nPlot the Bray-Curtis and Jaccard dissimilarity for each site."
+    "text": "Exercises\nFor these exercises use the LDWF Pontchartrain seine sampling dataset. This dataset is the abundance for each species (in wide format) for 16 sites over 1 date.\n\nUsing the Pontchartrain dataset calculate the mean and SD for species richness, Shannon, Simpson, and inverse Simpson for each sampling site.\nPlot the dominance (Whittiker) and K-dominance curves for each site.\nPlot the \\(\\alpha\\), \\(\\beta\\), and \\(\\gamma\\) diversity for each site for each sampling date in 2007. Use either additive or multiplicative \\(\\beta\\) diversity. Plot diversity over time.\nPlot the Bray-Curtis and Jaccard dissimilarity for each site."
   }
 ]

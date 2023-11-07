@@ -273,7 +273,7 @@ ggarrange(PA_dist, Co_dist,
 ```
 
 ## Exercises
-For these exercises use the [LDWF Pontchartrain seine sampling dataset](https://github.com/BSC6926-B52-Fall2023/workshopScripts/blob/main/data/Pontchartrain.csv). This dataset is the abundance for each species (in wide format) for 6 sites over 1 date.
+For these exercises use the [LDWF Pontchartrain seine sampling dataset](https://github.com/BSC6926-B52-Fall2023/workshopScripts/blob/main/data/Pontchartrain.csv). This dataset is the abundance for each species (in wide format) for 16 sites over 1 date.
 
 1. Using the Pontchartrain dataset calculate the mean and SD for species richness, Shannon, Simpson, and inverse Simpson for each sampling site.
 
