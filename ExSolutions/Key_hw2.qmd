@@ -1,0 +1,282 @@
+---
+title: "Homework 2"
+format: 
+  html:
+    toc: true
+    theme: yeti
+---
+
+## Instructions
+
+Please, using quarto or rmarkdown, answer the questions below. You can use the class notes, the recommended books, and other web materials to help answer the questions. You can work on the homework in groups, but please independently submit pdf document containing answers and code.
+
+**In two weeks (10/31/23 by 11:59pm)**, please submit your pdf file to CANVAS using the following filename structure LastName_HW2_Filetype_Date (e.g., Santos_HW2_R_20230927). Again, you can share and work together on the code, but independently, submit your answers to the short answer questions in your own words and as markdown text under each question. Here are links to resources about [quarto](https://r4ds.hadley.nz/quarto) and [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html).
+
+Please reach out if you have any questions about the hw or how to make a pdf using quarto or rmarkdown.
+
+## Data for questions
+
+For this section 1 and 2 of this homework, you will use a dataset from the `lterdatasampler` R package <https://lter.github.io/lterdatasampler/> called "and_vertebrates". The `lterdatasampler` R package was created by the NSF LTER program <https://lternet.edu> to provide data examples for educational purposes. This dataset consists of the populations of Coastal giant salamander (*Dicamptodon tenebrosus*) in two standard reaches of Mack Creek in the H.J. Andrews Experimental Forest that have been monitored since 1987. The two standard reaches are in a section of clear-cut forest (ca. 1963) and an upstream old-growth forest (\>500 years). Sub-reaches are sampled with 2-pass electrofishing, and all individuals are measured and weighed.
+
+### Section 1 (15 pts)
+
+1.  Upload "and_vertebrates" into R-Studio (remember you have to download the lterdatasampler R package before). Using R, create a new dataset by selecting only salamander data from the lower reach section, then calculate abundance (total number of individuals collected) by sitecode and year for Coastal giant salamander. Please, use "Nt" to name the column with the abundance data. Here are details about the "and_vertebrates" data useful to answer this question (look for info in the "Table Column Descriptions" tab in Data Entities - <https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-and.4027.14> (3 pts).
+
+```{r}
+library(lterdatasampler)
+library(tidyverse)
+data('and_vertebrates')
+
+df = and_vertebrates |>  
+  filter(species == 'Coastal giant salamander',
+         reach == 'L') |> 
+  group_by(year,sitecode) %>% 
+  summarize(Nt = n())
+
+df
+```
+
+
+2.  Plot annual estimates of salamander abundance per sitecode (2 pts).
+```{r}
+ggplot(df, aes(year,Nt, color = sitecode))+
+  geom_point(size = 2)+
+  geom_line(linewidth = 1)+
+  theme_bw()
+```
+
+
+3.  Short Essay Question: How do the temporal trends of Coastal giant salamander between the sitecode compare (5 pts)?
+
+*Overall the clear cut forest tends to support higher abundance of salamanders than the old growth site. Each populations tends to have fluctuations at similar times, but the old growth populations tends to be more stable. *
+
+4.  Using R, calculate lambda from one year to the next (i.e., for each time step) for the two reach (sitecode) you selected. Try using either a for-loop or functions (1 pt).
+
+```{r}
+df = df %>% 
+  group_by(sitecode) %>% 
+  mutate(lambda = lead(Nt)/Nt)
+
+df
+```
+
+
+5.  Calculate the mean(λ) and sd(λ) for the two reaches using your calculation from Q1.4. Remember to use the geometric mean and its standard deviation (1 pt).
+
+```{r}
+library(DescTools)
+
+g = df %>% 
+  group_by(sitecode) %>% 
+  summarize(mean = Gmean(lambda, na.rm = T),
+            test = exp(mean(log(lambda), na.rm =T)),
+            sd = Gsd(lambda, na.rm = T))
+
+g
+```
+
+
+6.  Using ggplot, plot the lambda for each year. Add a horizontal line for the mean(λ) calculated in question 5 and ribbon around the line to indicate the sd(λ) (3 pt).
+
+```{r}
+d = left_join(df, g, by = 'sitecode') |> drop_na()
+
+ggplot(d, aes(year, lambda, color = sitecode))+
+  geom_ribbon(aes(ymin = mean-sd, ymax = mean+sd), alpha = 0.1)+
+  geom_point()+
+  geom_hline(data = g, aes(yintercept = mean, color = sitecode))
+```
+
+
+### Section 2 (23 pts)
+
+1.  Using the same dataset from Section 1, estimate $K$ from your $\lambda$ and abundance estimates for both reaches (3 pts). Hint: Remember the linear relationship between density and per-capita growth rate in the density-dependent model discussed in class and the workshop.
+
+$K_{cc}$ = 95 and $K_{og}$ = 63 
+```{r}
+df = df %>% 
+  group_by(sitecode) %>% 
+  mutate(per.capita = (lead(Nt)-Nt)/Nt)
+ggplot(df, aes(Nt, per.capita, color = sitecode)) + 
+  geom_smooth(method = 'lm') +
+  geom_point(size = 2) +
+  labs(x = expression(italic(N[t])),
+       y =  expression('per capita growth ('~italic(Delta~N[t]/N[t])~')'),
+       title = 'Per Capita Growth')+
+  theme_bw()
+
+lcc= lm(per.capita ~ Nt, data = df %>% filter(sitecode == 'MACKCC-L'))
+summary(lcc)
+
+Kcc = -lcc$coefficients[1]/lcc$coefficients[2]
+
+log= lm(per.capita ~ Nt, data = df %>% filter(sitecode == 'MACKOG-L'))
+summary(log)
+
+Kog = -log$coefficients[1]/log$coefficients[2]
+
+Kcc
+Kog
+```
+
+
+2.  Using a discrete density-dependent growth model, project the population growth for salamander in both reaches to 150 years based on the carrying capacity values estimated in Q2 and a starting population size of 50 individuals. Hint: $1 + r_d = \lambda$; See Gotelli pages 35-37 and pages Stevens 62-68 (3 pts).
+
+```{r}
+site = unique(df$sitecode)
+N0 = 50
+years = 150
+pop = tibble(time = rep(0:years, times = length(site)),
+             Nt = NA,
+             site = rep(site, each = years+1)) 
+pop$Nt[pop$time == 0] = N0
+
+rdcc = g$mean[g$sitecode == 'MACKCC-L'] -1
+rdog = g$mean[g$sitecode == 'MACKOG-L'] -1
+
+for(i in 1:length(pop$time)){
+  if(pop$time[i] != 0){
+    if(pop$site[i] == 'MACKCC-L'){
+      pop$Nt[i] = pop$Nt[i - 1]  + rdcc*pop$Nt[i - 1]*(1 - pop$Nt[i - 1] / Kcc)
+    }else if(pop$site[i] == 'MACKOG-L'){
+      pop$Nt[i] = pop$Nt[i - 1]  + rdog*pop$Nt[i - 1]*(1 - pop$Nt[i - 1] / Kog)
+    }
+  }
+}
+
+pop
+```
+
+
+3.  Using ggplot, plot the population projections for each reach (1 pts).
+
+```{r}
+ggplot(pop, aes(time, Nt, color = site))+
+  geom_line(size = 1) +
+  labs(x = 'Time', y = expression(italic(N[t])))+
+  theme_bw()
+```
+
+
+4.  Short essay question: How do the projections for each reach differ? Did the population get as far as the carrying capacity? Why or why not? If not, how many years are required to reach the carrying capacity? When at carrying capacity, do the population fluctuate around K? Why or Why not? (5 pts)
+
+*The population in the old growth forest has a lower carying capacity than the clear cut and approaches carrying capacity around 100 years. The populations do not fluctuate because r is low.*
+
+5.  Project the population of salamander in the two reaches for 150 years using a discrete density-dependent model with environmental stochasticity. Run the projections 50 times for each reach (i.e., 50 projections per reach) (5 pts).\
+
+    -   Use the 50 as $N_0$, carrying capacity ($K$) values estimated in Q2, and at each time step, use a randomly determined $r_d$ based on the mean and standard deviation of $\lambda$ calculated in Q1.5 -- Hint: rtruncnorm() function in R and for loops (e.g., Wickham and Grolemund Chapter 17).
+
+```{r}
+
+for(j in 1:50){
+  site = unique(df$sitecode)
+  N0 = 50
+  years = 150
+  pop = tibble(time = rep(0:years, times = length(site)),
+               Nt = NA,
+               site = rep(site, each = years+1),
+               rdcc = NA,
+               rdog = NA) 
+  pop$Nt[pop$time == 0] = N0
+  
+  for(i in 1:length(pop$time)){
+    pop$rdcc[i] = truncnorm::rtruncnorm(1, a = 0,
+                                 mean = g$mean[g$sitecode == 'MACKCC-L'], 
+                                 sd = g$sd[g$sitecode == 'MACKCC-L']) - 1
+    pop$rdog[i] = truncnorm::rtruncnorm(1, a = 0,
+                                 mean = g$mean[g$sitecode == 'MACKOG-L'], 
+                                 sd = g$sd[g$sitecode == 'MACKOG-L']) - 1
+    if(pop$time[i] != 0){
+      if(pop$site[i] == 'MACKCC-L'){
+        pop$Nt[i] = pop$Nt[i - 1]  + pop$rdcc[i-1]*pop$Nt[i - 1]*(1 - pop$Nt[i - 1] / Kcc)
+      }else if(pop$site[i] == 'MACKOG-L'){
+        pop$Nt[i] = pop$Nt[i - 1]  + pop$rdog[i-1]*pop$Nt[i - 1]*(1 - pop$Nt[i - 1] / Kog)
+      }
+    }
+  }
+  pop$rep = j
+  if(j == 1){
+    pop_all = pop
+  }else{
+    pop_all = bind_rows(pop_all, pop)
+  }
+}
+
+
+
+```
+
+
+6.  Using ggplot, plot a histogram (or density plot) of the population size after 150 year for each reach with a vertical line of the carrying capacity (1 pts).
+
+```{r}
+p150 = pop_all |> 
+  filter(time == 150)
+
+ggplot(p150, aes(x = Nt, fill = site))+
+  geom_histogram()
+
+```
+
+
+7.  Short essay question: How does the population size at time 150 compare between each reach? How do the estimates relate to the carrying capacity? (5 pts).
+
+*They both always reached carrying capacity* 
+
+### Section 3 (19 pts)
+
+![](insect_model.png)
+
+1. Convert the loop diagram (life cycle graph) above into a projection matrix (1 pt).
+```{r}
+A = matrix(c(0,0,100,0.1,0.5,0,0,0.3,0.2), nrow = 3, byrow = T)
+A
+```
+
+
+2.  Create a starting population vector based on the life stages of this insect species: egg (N = 0), larvae (N = 30), adult (N = 10). Project the population up to 50 years using the starting population vector and the projection matrix you created (hint: A%\*%n(t); See Stevens Chapter 2 pages 34-40) (5 pts).
+```{r}
+library(popbio)
+n = c(egg = 0, larvae = 30, adult = 10)
+
+pop = pop.projection(A, n, 50)
+
+pop
+```
+
+
+3.  Plot your results using ggplot, popbio, or base R plotting functions. Plot the projection for each stage class (2 pts).
+```{r}
+pp = tibble(time = as.numeric(colnames(pop$stage.vectors)),
+            egg = pop$stage.vectors[1,],
+            larvae = pop$stage.vectors[2,],
+            adult = pop$stage.vectors[3,],
+            total = pop$pop.sizes) %>% 
+  pivot_longer(egg:total, names_to = 'stage', values_to = 'n') %>% 
+  mutate(stage = factor(stage, 
+                        levels =c('total','egg','larve','adult')))
+
+ggplot(pp, aes(time, n, color = stage)) +
+  geom_point() +
+  geom_line(size = 1) +
+  labs(x = 'Time', y = 'Population size', color = 'Stage') +
+  scale_color_manual(values = c('black', 'brown', 'green', 'pink'))+
+  theme_bw()
+
+stage.vector.plot(pop$stage.vectors)
+```
+
+
+4.  Short essay question: Looking at the plot from Q3, did the population projection reach a stable stage distribution? Why or why not? What could you tell about the fate of the population after 50 years? (5 pts).
+*Yes, because the proportion in each stage remains the same.*
+
+5.  Based on the project matrix above, calculate lambda and calculate the stable stage distribution (1 pt).
+```{r}
+pop$lambda
+
+pop$stable.stage
+```
+
+
+6.  Short essay question: What is the proportion between the stages at SSD? What stage is the dominant stage of the population after the stable stage distribution is reached? Why? (5 pts).
+*egg = 0.90834819, larvae = 0.07629571, and adult = 0.01535610. Egg is dominant*
