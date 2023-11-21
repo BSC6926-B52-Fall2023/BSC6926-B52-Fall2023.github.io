@@ -1,6 +1,6 @@
-# """ Workshop 2: Introduction to R
-#     BSC 6926 B52
-#     date: 9/5/2023"""
+# """ Workshop 9: trait hypervolumes
+#     BSC 6926 B53
+#     date: 11/20/2023"""
 
 
 # This workshop discusses working with community trait data by introducing the `hypervolume` package by going over how to prepare the data and how to build hypervolumes in multiple ways.\

@@ -1,7 +1,7 @@
 ---
-title: "Workshop 5: Density independent models"
+title: "Workshop 8: Community data with vegan"
 author: "BSC 6926 B53"
-date: "10/10/2023"
+date: "11/6/2023"
 format: 
   html:
     toc: true
