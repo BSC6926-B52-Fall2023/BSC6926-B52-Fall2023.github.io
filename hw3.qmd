@@ -1,0 +1,53 @@
+---
+title: "Homework 3"
+format: 
+  html:
+    toc: true
+    theme: yeti
+---
+
+## Instructions
+
+Please, using quarto or rmarkdown, answer the questions below. You can use the class notes, the recommended books, and other web materials to help answer the questions. You can work on the homework in groups, but please independently submit pdf document containing answers and code.
+
+**In two weeks (12/4/23 by 11:59pm)**, please submit your pdf file to CANVAS using the following filename structure LastName_HW2_Filetype_Date (e.g., Santos_HW2_R_20230927). Again, you can share and work together on the code, but independently, submit your answers to the short answer questions in your own words and as markdown text under each question. Here are links to resources about [quarto](https://r4ds.hadley.nz/quarto) and [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html).
+
+Please reach out if you have any questions about the hw or how to make a pdf using quarto or rmarkdown.
+
+## Data for questions
+
+For this homework, you will use one dataset. This dataset will be available in CANVAS under the HW2 link in the Modules tab and on the workshop website. This dataset is titled [LDWF2007seine.csv](https://github.com/BSC6926-B52-Fall2023/workshopScripts/blob/main/data/LDWF2007seine.csv). The dataset consists of nektonic species collected throughout the coastal marshes of Louisiana using seine nets. The sampling was performed monthly across distinct sampling basins (strata), and used to count all the individuals of species caught in the seine nets.  
+
+## Questions
+
+## Section 1 - Exploratory Analysis of the Community (20 pts)
+1. Upload the LDWF seine data,filter for seines collected in the Barataria, Terrebonne, and Vermilion basin, and create a month column. (5pts) \
+*-Hint: use the `lubridate` package and create a column for month based on the information in the date column (YYYYMMDD format)*
+
+2. Identify the 15 most abundant species caught across these three basins based on the species' average abundance. (5 pts).
+
+3. Calculate the average abundance of the top 15 species in each basin, and plot the average abundance for each species for each basin using a heat map (5 pts). 
+*-Hint: `geom_raster()`.*
+
+4. *Short essay question 1.1:* Based on the heatmaps, what can you conclude about the communities/assemblages across basins? (5 pts)
+
+## Section 2 – Community assemblage dissimilarities (20 pts)
+1. Calculate each species' monthly mean abundance per basin (3 pts).\
+
+2. Convert the dataset from long format to wide format (2 pts).
+
+3. Calculate the Jaccard dissimilarity and identify which points have the lowest and highest dissimilarity (5 pts).
+*-Hint: Make a column that contains both the basin and the month to use as rownames of your matrix*
+
+4. Project dissimilarity into 2-dimensional space using nonmetric multidimensional scaling and illustrate the results in a biplot (5 pts).
+
+5. *Short essay question 2.1:* Based on the nMDS, what can you conclude about the communities/assemblages across basins? (5 pts)
+
+## Section 3 - Characterize the species diversity of the nektonic community (15 pts)
+1. Using the vegan package or a for loop, calculate the species richness, inverse Simpson index, and Shannon index ($H$) per month for each basin (5 pts).
+
+2. Plot each metric from question 1 for each month and basin (3 pts). 
+
+3. *Short essay question 3.1:* Based on species richness, Simpson, and Shannon indices, what is happening to species diversity across basins and months? What can you tell about species evenness by looking at the plot? (7 pts).
+
+
